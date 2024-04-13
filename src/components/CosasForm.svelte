@@ -51,7 +51,7 @@
             setCosaFormDefault()
          });
 
-         alert(`Por favor guarde el nro o quitele una foto al código: ${codigo}`)
+         alert(`Por favor guarde o quitele una foto al código: ${codigo}`)
 
       } catch (error) {
          alert(error)   
@@ -83,6 +83,7 @@
     <div class="my-5">
         <label >Fecha { cosaForm.estado == '' ? '' : `en que ${cosaForm.estado}` }:</label>
         <input type="text" class={cssClass.inputText}  bind:value={cosaForm.fecha}>
+        <small>Formato: 01/01/{(new Date().getFullYear())}</small>
     </div>
 
     <div class="my-5">
