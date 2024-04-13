@@ -15,8 +15,6 @@ import replaceEnv from '@rollup/plugin-replace';
 dotenv.config();
 
 const production = !process.env.ROLLUP_WATCH;
-const firebase = process.env.FIREBASE_API_KEY
-console.log(firebase);
 
 function serve() {
 	let server;

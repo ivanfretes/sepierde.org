@@ -22,7 +22,7 @@ onMount(() => {
 
 <ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
     {#if cosas}
-      {#each cosas as snapshot (snapshot.data().Id)}
+      {#each cosas as snapshot (snapshot.data().id)}
         <li class="pb-3 sm:pb-4">
           <div class="flex items-center space-x-4 rtl:space-x-reverse">
             <div class="flex-shrink-0">

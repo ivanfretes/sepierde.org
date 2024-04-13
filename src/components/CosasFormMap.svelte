@@ -2,7 +2,6 @@
     import L from 'leaflet';
     import { onMount, createEventDispatcher } from "svelte";
     import 'leaflet/dist/leaflet.css';
-    import { stringify } from 'postcss';
 
     let map;
     let currentMarker = null;
