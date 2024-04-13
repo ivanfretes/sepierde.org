@@ -3,6 +3,9 @@ import {
     setDoc,
     collection,
     onSnapshot,
+    orderBy, 
+    limit,
+    query,
     deleteDoc,
     doc,
 } from "firebase/firestore";
@@ -11,10 +14,11 @@ import { onMount } from "svelte";
 
 let cosas;
 
-onMount(() => {
-    onSnapshot(collection(db, "cosas"), (snapshot) => {
+onMount(async () => {
+   
+   onSnapshot(collection(db, "cosas"), (snapshot) => {
       cosas = snapshot.docs;
-    });
+   });    
   });
 
 </script>

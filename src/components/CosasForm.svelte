@@ -51,7 +51,7 @@
             setCosaFormDefault()
          });
 
-         alert("Por favor guarde el nro o quitele una foto al código")
+         alert(`Por favor guarde el nro o quitele una foto al código: ${codigo}`)
 
       } catch (error) {
          alert(error)   
@@ -108,7 +108,6 @@
     </div>
 
     <div class="my-5">
-        {JSON.stringify(cosaForm)}
         <label class="mt-3">Indicar donde</label>
         <CosasFormMap on:set-ubicacion={setUbicacion} />
     </div>

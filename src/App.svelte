@@ -2,9 +2,12 @@
 	import CosasForm from './components/CosasForm.svelte'
 	import CosasList from './components/CosasList.svelte'
 	import CosasMap from './components/CosasMap.svelte'
+   import HeroFirst from "./components/HeroFirst.svelte"
 
-	export let appName;
+   export let appName;
 	document.title = appName;
+
+   let cosas = []
 
 </script>
 
@@ -18,26 +21,34 @@
          <h1 class="text-3xl font-bold">{appName}</h1>
       </div>
 	</div>
+
+   <HeroFirst />
 	
 	<div class="container mx-auto">
-		<div class="grid grid-cols-3 gap-4">
+		<div class="grid grid-cols-2 gap-8">
 			<div>
-				<h2 class="text-2xl">Perdiste o encontraste algo</h2>
+				<h2 class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 ">Perdiste o encontraste algo</h2>
 				<hr class="mt-2 mb-3">
 				<CosasForm />
 			</div>
-			<div>
+			<!--div>
 				<h2 class="text-2xl">Novedades</h2>
 				<hr class="mt-2 mb-3">
 				<CosasList />	
-			</div>
+			</div-->
 			<div>
-				<h2 class="text-2xl">Listado por ubicación</h2>
+				<h2 class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 ">Listado por ubicación</h2>
 				<hr class="mt-2 mb-3">
-				<CosasMap />
+				<CosasMap cosas={cosas}/>
 			</div>
 		</div>
+
+
+      <div class="py-5">
+         {appName} - con mucho ❤️ por <a href="https://ivanfretes.com" target="_blank">Ivan F.</a>
+      </div>
 	</div>
+
 </main>
 
 <style>

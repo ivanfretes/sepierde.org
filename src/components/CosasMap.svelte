@@ -1,13 +1,53 @@
 <script>
-    import L from 'leaflet';
+
+   import L from 'leaflet';
     import { onMount } from "svelte";
     import 'leaflet/dist/leaflet.css';
-
-    let map;
-    let ubicationDefault = [-25, -56]
+   import {
+    collection,
+    onSnapshot,
+    orderBy,
+    query,
+   } from "firebase/firestore";
+   import { db } from "../firebase.js"
 
     export let cosas;
+
+    let map;
+    let markers = [];
+    let ubicationDefault = [-25, -56]
+
     
+    async function cargarMarcadores() {
+      const icon = L.icon({
+         iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+      });
+      
+      markers.forEach(marker => map.removeLayer(marker));
+
+      /*const querySnapshot = await collection(db, 'cosas').get();
+      markers = querySnapshot.docs.map(doc => {
+         const data = doc.data();
+         const ubicacion = 
+         console.log(ubicacion);
+         const marker = L.marker(ubicacion, {icon}).addTo(map);
+         
+         //marker.bindPopup(`<b>${data.titulo}</b><br>${data.descripcion}`);
+         return marker;
+      });*/
+      const querySnapshot = query(collection(db, 'cosas'),orderBy("id", "desc"))
+      onSnapshot(querySnapshot, (snapshot) => {
+         cosas = snapshot.docs
+
+         cosas.forEach(doc => {
+            const data = doc.data()
+            const ubicacion = JSON.parse(data.ubicacion)
+
+            L.marker([ubicacion.lat, ubicacion.lng], {icon}).addTo(map);
+         })
+      })
+   }
+
     onMount(() => {
         map = L.map('map').setView(ubicationDefault, 6);
 
@@ -15,14 +55,10 @@
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
 
-        const icon = L.icon({
-            iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
-        });
-
-
-        L.marker(ubicationDefault, { icon }).addTo(map)
-            .bindPopup('PERDI Llaves, Cartera')
-            .openPopup();
+        
+        
+        // Cargar marcadores inicialmente
+         cargarMarcadores();
 
         function onMapClick(e) {
             if (confirm("Perdiste o encotraste algo, agregalo aqui")){
@@ -39,11 +75,12 @@
 
 <style>
 #map {
-    height: 100%;
+    height: 80%;
     width: 100%;
     background: #eaeaea;
     position: relative;
 }
 </style>
+
 
 <div id="map"></div>

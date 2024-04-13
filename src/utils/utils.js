@@ -30,3 +30,12 @@ export const isEmptyOneAttr = (_object) => {
 
    return false;
 }
+
+export const getCantDias = (fechaInicio, fechaFin) => {
+   const tiempoInicio = fechaInicio.getTime();
+   const tiempoFin = fechaFin.getTime();
+
+   const diferenciaEnMilisegundos = tiempoFin - tiempoInicio;
+   const diferenciaEnDias = diferenciaEnMilisegundos / (1000 * 60 * 60 * 24);
+   return diferenciaEnDias;
+}
