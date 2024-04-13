@@ -37,6 +37,9 @@ If you're building a single-page app (SPA) with multiple routes, sirv needs to b
 "start": "sirv public --single"
 ```
 
+### Agradecimientos
+- Icon: https://www.flaticon.es/autores/robert-angle
+
 ## Todo
 - This repo is no longer maintained. Consider using `npm init vite` and selecting the `svelte` option or — if you want a full-fledged app framework — use [SvelteKit](https://kit.svelte.dev), the official application framework for Svelte.
 
