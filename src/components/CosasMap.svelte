@@ -25,16 +25,6 @@
       
       markers.forEach(marker => map.removeLayer(marker));
 
-      /*const querySnapshot = await collection(db, 'cosas').get();
-      markers = querySnapshot.docs.map(doc => {
-         const data = doc.data();
-         const ubicacion = 
-         console.log(ubicacion);
-         const marker = L.marker(ubicacion, {icon}).addTo(map);
-         
-         //marker.bindPopup(`<b>${data.titulo}</b><br>${data.descripcion}`);
-         return marker;
-      });*/
       const querySnapshot = query(collection(db, 'cosas'),orderBy("id", "desc"))
       onSnapshot(querySnapshot, (snapshot) => {
          cosas = snapshot.docs
