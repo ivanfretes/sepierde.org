@@ -130,7 +130,3 @@ dist
 /public/build/
 
 .DS_Store
-
-
-# sepierde.org
-./src/firebase.js

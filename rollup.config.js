@@ -9,8 +9,14 @@ import postcss from 'rollup-plugin-postcss';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 import localServe from 'rollup-plugin-serve'
+import dotenv from "dotenv"
+import replaceEnv from '@rollup/plugin-replace';
+
+dotenv.config();
 
 const production = !process.env.ROLLUP_WATCH;
+const firebase = process.env.FIREBASE_API_KEY
+console.log(firebase);
 
 function serve() {
 	let server;
@@ -77,6 +83,17 @@ export default {
 			exportConditions: ['svelte']
 		}),
 		commonjs(),
+      replaceEnv({
+         preventAssignment: true,         
+         "process.env.FIREBASE_API_KEY": JSON.stringify(process.env.FIREBASE_API_KEY),
+         "process.env.FIREBASE_AUTH_DOMAIN": JSON.stringify(process.env.FIREBASE_AUTH_DOMAIN),
+         "process.env.FIREBASE_DABASE_URL": JSON.stringify(process.env.FIREBASE_DABASE_URL),
+         "process.env.FIREBASE_PROJECT_ID": JSON.stringify(process.env.FIREBASE_PROJECT_ID),
+         "process.env.FIREBASE_STORAGE_BUCKET": JSON.stringify(process.env.FIREBASE_STORAGE_BUCKET),
+         "process.env.FIREBASE_MESSAGE_SENDER_ID": JSON.stringify(process.env.FIREBASE_MESSAGE_SENDER_ID),
+         "process.env.FIREBASE_APP_ID": JSON.stringify(process.env.FIREBASE_APP_ID),
+         "process.env.FIREBASE_MEASUREMENT_ID": JSON.stringify(process.env.FIREBASE_MEASUREMENT_ID),
+      }),
 
 		// In dev mode, call `npm run start` once
 		// the bundle has been generated
