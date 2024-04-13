@@ -68,7 +68,7 @@
 </script>
 
 
-
+<div>
     <div class="my-5">
         <label>¿Qué pasó con el objeto?</label>
         <label><input type="radio" bind:group={cosaForm.estado} value="encontre"> Encontré</label>
@@ -117,3 +117,4 @@
     <div class="my-3 ">
         <button on:click={guardar} class="w-full bg-blue-500 text-white p-2 rounded-lg border-o w-100">Enviar</button>
     </div>
+</div>
