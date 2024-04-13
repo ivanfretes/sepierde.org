@@ -1,0 +1,35 @@
+{
+  "name": "svelte-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "sirv public --no-clear"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-terser": "^0.4.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "rollup": "^3.15.0",
+    "rollup-plugin-css-only": "^4.3.0",
+    "rollup-plugin-livereload": "^2.0.0",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-svelte": "^7.2.0",
+    "svelte": "^3.55.0",
+    "tailwindcss": "^3.4.3"
+  },
+  "dependencies": {
+    "firebase": "^10.10.0",
+    "i": "^0.3.7",
+    "leaflet": "^1.9.4",
+    "npm": "^10.5.1",
+    "postcss-load-config": "^5.0.3",
+    "rollup-plugin-serve": "^1.1.1",
+    "sirv-cli": "^2.0.0",
+    "svelte-leaflet": "^0.2.0"
+  }
+}
