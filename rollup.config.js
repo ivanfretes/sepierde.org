@@ -66,6 +66,7 @@ export default {
 				autoprefixer
 			],
 		}),
+      
 		// we'll extract any component CSS out into
 		// a separate file - better for performance
 		css({ output: 'bundle.css' }),
@@ -106,6 +107,6 @@ export default {
 		production && terser()
 	],
 	watch: {
-		clearScreen: false
+		clearScreen: true
 	}
 };
