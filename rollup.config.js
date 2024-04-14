@@ -23,7 +23,7 @@ function serve() {
 		if (server) server.kill(0);
 	}
 
-	return {
+	/*return {
 		writeBundle() {
 			if (server) return;
 			server = spawn('npm', ['run', 'start', '--', '--dev'], {
@@ -34,7 +34,7 @@ function serve() {
 			process.on('SIGTERM', toExit);
 			process.on('exit', toExit);
 		}
-	};
+	};*/
 }
 
 export default {
@@ -43,7 +43,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'public/bundle.js'
 	},
 	plugins: [
 		svelte({
