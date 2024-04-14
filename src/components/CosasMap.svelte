@@ -70,6 +70,13 @@
     background: #eaeaea;
     position: relative;
 }
+
+
+@media (max-width: 780px){
+   #map {
+      height: 700px
+   }
+}
 </style>
 
 

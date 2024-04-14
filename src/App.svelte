@@ -25,8 +25,8 @@
    <HeroFirst />
 	
 	<div class="container mx-auto">
-		<div class="grid grid-cols-2 gap-8">
-			<div>
+		<div class="grid md:grid-cols-2 md:gap-8">
+			<div class="pb-4">
 				<h2 class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 ">Perdiste o encontraste algo</h2>
 				<hr class="mt-2 mb-3">
 				<CosasForm />
@@ -36,7 +36,7 @@
 				<hr class="mt-2 mb-3">
 				<CosasList />	
 			</div-->
-			<div>
+			<div class="pb-4">
 				<h2 class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 ">Listado por ubicación</h2>
 				<hr class="mt-2 mb-3">
 				<CosasMap cosas={cosas}/>
@@ -65,4 +65,5 @@
 			max-width: none;
 		}
 	}
+
 </style>

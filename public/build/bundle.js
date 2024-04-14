@@ -31679,7 +31679,7 @@ var app = (function () {
     	validate_slots('CosasFormMap', slots, []);
     	let map;
     	let currentMarker = null;
-    	let { currentUbication } = $$props;
+    	let currentUbication = null;
     	let { ubicationDefault = [-25, -56] } = $$props;
     	const dispatch = createEventDispatcher();
 
@@ -31697,7 +31697,7 @@ var app = (function () {
     		function onMapClick(e) {
     			if (confirm("Perdiste o encotraste algo, agregalo aqui")) {
     				if (currentMarker != null) currentMarker.remove();
-    				$$invalidate(0, currentUbication = e.latlng);
+    				currentUbication = e.latlng;
     				currentMarker = L$1.marker(currentUbication, { icon }).addTo(map).bindPopup('You clicked the map at ' + e.latlng);
     				dispatch('set-ubicacion', currentUbication);
     			}
@@ -31706,21 +31706,14 @@ var app = (function () {
     		map.on('click', onMapClick);
     	});
 
-    	$$self.$$.on_mount.push(function () {
-    		if (currentUbication === undefined && !('currentUbication' in $$props || $$self.$$.bound[$$self.$$.props['currentUbication']])) {
-    			console.warn("<CosasFormMap> was created without expected prop 'currentUbication'");
-    		}
-    	});
-
-    	const writable_props = ['currentUbication', 'ubicationDefault'];
+    	const writable_props = ['ubicationDefault'];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console.warn(`<CosasFormMap> was created with unknown prop '${key}'`);
     	});
 
     	$$self.$$set = $$props => {
-    		if ('currentUbication' in $$props) $$invalidate(0, currentUbication = $$props.currentUbication);
-    		if ('ubicationDefault' in $$props) $$invalidate(1, ubicationDefault = $$props.ubicationDefault);
+    		if ('ubicationDefault' in $$props) $$invalidate(0, ubicationDefault = $$props.ubicationDefault);
     	};
 
     	$$self.$capture_state = () => ({
@@ -31737,21 +31730,21 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ('map' in $$props) map = $$props.map;
     		if ('currentMarker' in $$props) currentMarker = $$props.currentMarker;
-    		if ('currentUbication' in $$props) $$invalidate(0, currentUbication = $$props.currentUbication);
-    		if ('ubicationDefault' in $$props) $$invalidate(1, ubicationDefault = $$props.ubicationDefault);
+    		if ('currentUbication' in $$props) currentUbication = $$props.currentUbication;
+    		if ('ubicationDefault' in $$props) $$invalidate(0, ubicationDefault = $$props.ubicationDefault);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [currentUbication, ubicationDefault];
+    	return [ubicationDefault];
     }
 
     class CosasFormMap extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init(this, options, instance$5, create_fragment$5, safe_not_equal, { currentUbication: 0, ubicationDefault: 1 });
+    		init(this, options, instance$5, create_fragment$5, safe_not_equal, { ubicationDefault: 0 });
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -31759,14 +31752,6 @@ var app = (function () {
     			options,
     			id: create_fragment$5.name
     		});
-    	}
-
-    	get currentUbication() {
-    		throw new Error("<CosasFormMap>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
-    	}
-
-    	set currentUbication(value) {
-    		throw new Error("<CosasFormMap>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
 
     	get ubicationDefault() {
@@ -32690,8 +32675,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			attr_dev(div, "id", "map");
-    			attr_dev(div, "class", "svelte-33nii4");
-    			add_location(div, file$2, 75, 0, 1829);
+    			attr_dev(div, "class", "svelte-m1pqne");
+    			add_location(div, file$2, 82, 0, 1895);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -33098,7 +33083,7 @@ var app = (function () {
     			a = element("a");
     			a.textContent = "Ivan F.";
     			if (!src_url_equal(img.src, img_src_value = "/icon.png")) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "class", "icon svelte-18dr1qd");
+    			attr_dev(img, "class", "icon svelte-1nur6r5");
     			add_location(img, file, 17, 9, 456);
     			attr_dev(div0, "class", "mx-2 mt-1");
     			add_location(div0, file, 15, 6, 368);
@@ -33108,25 +33093,27 @@ var app = (function () {
     			attr_dev(div2, "class", "mt-3 mb-5 flex justify-start");
     			add_location(div2, file, 14, 1, 319);
     			attr_dev(h20, "class", "mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 ");
-    			add_location(h20, file, 29, 4, 699);
+    			add_location(h20, file, 29, 4, 718);
     			attr_dev(hr0, "class", "mt-2 mb-3");
-    			add_location(hr0, file, 30, 4, 820);
-    			add_location(div3, file, 28, 3, 689);
+    			add_location(hr0, file, 30, 4, 839);
+    			attr_dev(div3, "class", "pb-4");
+    			add_location(div3, file, 28, 3, 695);
     			attr_dev(h21, "class", "mb-4 text-2xl font-extrabold tracking-tight leading-none text-gray-900 ");
-    			add_location(h21, file, 39, 4, 994);
+    			add_location(h21, file, 39, 4, 1026);
     			attr_dev(hr1, "class", "mt-2 mb-3");
-    			add_location(hr1, file, 40, 4, 1109);
-    			add_location(div4, file, 38, 3, 984);
-    			attr_dev(div5, "class", "grid grid-cols-2 gap-8");
+    			add_location(hr1, file, 40, 4, 1141);
+    			attr_dev(div4, "class", "pb-4");
+    			add_location(div4, file, 38, 3, 1003);
+    			attr_dev(div5, "class", "grid md:grid-cols-2 md:gap-8");
     			add_location(div5, file, 27, 2, 649);
     			attr_dev(a, "href", "https://ivanfretes.com");
     			attr_dev(a, "target", "_blank");
-    			add_location(a, file, 47, 38, 1246);
+    			add_location(a, file, 47, 38, 1278);
     			attr_dev(div6, "class", "py-5");
-    			add_location(div6, file, 46, 6, 1189);
+    			add_location(div6, file, 46, 6, 1221);
     			attr_dev(div7, "class", "container mx-auto");
     			add_location(div7, file, 26, 1, 615);
-    			attr_dev(main, "class", "svelte-18dr1qd");
+    			attr_dev(main, "class", "svelte-1nur6r5");
     			add_location(main, file, 13, 0, 311);
     		},
     		l: function claim(nodes) {

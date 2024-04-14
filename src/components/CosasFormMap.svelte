@@ -5,7 +5,7 @@
 
     let map;
     let currentMarker = null;
-    export let currentUbication;
+    let currentUbication = null;
 
     export let ubicationDefault = [-25, -56]
     const dispatch = createEventDispatcher();
